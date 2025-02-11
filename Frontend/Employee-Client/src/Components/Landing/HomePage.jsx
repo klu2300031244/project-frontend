@@ -6,16 +6,16 @@ import HomeNavbar from "../NavBars/HomeNavbar";
 import Footer from "./Footer";
 const HomePage = () => {
   const cards = [
-    { index: 0, color: "252, 252, 252", image: "/images/adobe.jpg" },
-    { index: 1, color: "252, 252, 252", image: "/images/amazon-logo.jpg" },
+    { index: 0, color: "252, 252, 252", image: "/images/adobe.jpeg" },
+    { index: 1, color: "252, 252, 252", image: "/images/amazon-logo.jpeg" },
     {
       index: 2,
       color: "252, 252, 252",
-      image: "/images/apple-company-log.jpg",
+      image: "/images/apple-company-logo.jpeg",
     },
-    { index: 3, color: "252, 252, 252", image: "/images/facebook-logo.jpg" },
-    { index: 4, color: "252, 252, 252", image: "/images/ibm-log.jpg" },
-    { index: 5, color: "252, 252, 252", image: "/images/intel.jpg" },
+    { index: 3, color: "252, 252, 252", image: "/images/facebook-logo.jpeg" },
+    { index: 4, color: "252, 252, 252", image: "/images/ibm-logo.jpeg" },
+    { index: 5, color: "252, 252, 252", image: "/images/intel.jpeg" },
     { index: 6, color: "252, 252, 252", image: "/images/microsoft-logo.jpg" },
     { index: 7, color: "252, 252, 252", image: "/images/netflix.jpg" },
     { index: 8, color: "252, 252, 252", image: "/images/tesla.jpg" },
