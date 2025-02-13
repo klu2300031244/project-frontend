@@ -27,7 +27,7 @@ const HomeNavbar = () => {
     <nav className={`navbar ${isSticky ? "sticky" : ""} ${!isHomePage ? "non-home" : ""}`}>
       <div className="navbar-container">
         <Link to="/" className="navbar-logo" >
-          Employee Management
+          EMS Dashboard
         </Link>
         <ul className="nav-menu">
           <li className="nav-item">

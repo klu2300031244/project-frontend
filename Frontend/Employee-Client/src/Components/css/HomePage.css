@@ -209,7 +209,7 @@
   --w: 180px;
   --h: 120px;
   --translateZ: calc(var(--w) + var(--h) + 0px);
-  --rotateX: -8deg;
+  --rotateX: -10deg;
   --perspective: 700px;
   --quantity: 10; /* Set quantity variable */
 

@@ -1,0 +1,175 @@
+
+.container-faq{
+   
+    width: 100%;
+    
+}
+.faq-heading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    height: 100vh; /* Full viewport height */
+    margin: 0 auto; /* Centering */
+}
+
+.faq-cards{
+    background-color: #fafafa;
+}
+
+.row{
+    margin-right: 0;
+}
+.faq-main{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; 
+    
+}
+.faq-cards{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    cursor: pointer;
+    width: 270px;
+    height: 280px;
+    border-radius: 7px;
+    background-color: #f0f2f5;
+    transition: background-color 0.3s ease;
+}
+
+.faq-cards:hover {
+    background-color: #fff6f6; /* Change to desired hover color */
+    transform: translateY(-5px); /* Adds a slight lift effect */
+}
+.icon-box{
+ 
+    width: 60px;
+    height: 60px;
+    background-color: #007bff;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px;
+    margin-top: 40px;
+    position: relative;
+    z-index: 2;
+}
+.icon-box i{
+    font-size: 30px;
+    color: #fff;
+}
+.modal{
+ top: 32%;
+ 
+}
+.modal-dialog{
+    width: 450px;
+    
+}
+.modal-content {
+    min-height: 300px; /* Adjust height */
+}
+.faq-cards {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    cursor: pointer;
+    width: 270px;
+    height: 280px;
+    border-radius: 7px;
+    background-color: #f0f2f5;
+    /* Add shadow and transition effects */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    /* Add subtle border */
+    border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.faq-cards:hover {
+    background-color: #fff6f6;
+    transform: translateY(-5px);
+    /* Enhanced shadow on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1), 
+                0 4px 8px rgba(0, 0, 0, 0.06);
+}
+
+/* Optional: Add a subtle gradient overlay */
+.faq-cards.button::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 7px;
+    background: linear-gradient(
+        45deg,
+        rgba(255, 255, 255, 0.1),
+        rgba(255, 255, 255, 0.05)
+    );
+    pointer-events: none;
+}
+
+/* Enhance icon box with depth */
+.icon-box {
+    width: 60px;
+    height: 60px;
+    background-color: #007bff;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px;
+    margin-top: 40px;
+    position: relative;
+    z-index: 2;
+    /* Add shadow to icon box */
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
+    transition: transform 0.3s ease;
+}
+
+/* Optional: Add hover effect to icon box */
+.faq-cards:hover .icon-box {
+    transform: scale(1.05);
+}
+.faq-cards {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    width: 270px;
+    height: 280px;
+    border-radius: 7px;
+    background-color: #f0f2f5;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Continuous Shine Effect */
+.faq-cards::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 150%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+    transform: skewX(-45deg);
+    animation: shineAnimation 3s infinite linear;
+}
+
+/* Keyframes for moving shine effect */
+@keyframes shineAnimation {
+    0% {
+        left: -100%;
+    }
+    100% {
+        left: 100%;
+    }
+}

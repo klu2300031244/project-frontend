@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import bgImage from "../../../public/images/bg-image-1.jpg";
+
 import "../css/HomePage.css";
 import HomeNavbar from "../NavBars/HomeNavbar";
 import Footer from "./Footer";
@@ -28,7 +28,7 @@ const HomePage = () => {
         <div className="navbar-overlay">
           <HomeNavbar />
         </div>
-        <img src={bgImage} alt="My Image" className="background-image" />
+        <img src="/images/bg-Image-1.jpg" alt="My Image" className="background-image" />
         <div className="hero-text">
           <h3>Streamline Your Workforce Management</h3>
           <h1>Effortless Employee Administration</h1>

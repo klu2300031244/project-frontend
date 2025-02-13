@@ -7,7 +7,7 @@ const SignupForm = () => {
 
   return (
     <div>
-        <HomeNavbar />
+      <HomeNavbar />
       <div className="container-signup">
         <div className="card-signup">
           <a className="signup">Sign Up</a>
@@ -36,43 +36,52 @@ const SignupForm = () => {
             <input type="password" required="required" />
             <span>Confirm Password</span>
           </div>
+          <div className="role-selection">
+            <span className="role-label">Select Role :</span>
+            <div className="wrapper-signup">
+              <div className="option">
+                <input
+                  defaultChecked={role === "Admin"}
+                  value="Admin"
+                  name="role"
+                  type="radio"
+                  className="input"
+                  onChange={(e) => setRole(e.target.value)}
+                />
+                <div className="btn">
+                  <span className="span">Admin</span>
+                </div>
+              </div>
 
-          {/* Radio Button for Role Selection */}
+              <div className="option">
+                <input
+                  defaultChecked={role === "Employer"}
+                  value="Employer"
+                  name="role"
+                  type="radio"
+                  className="input"
+                  onChange={(e) => setRole(e.target.value)}
+                />
+                <div className="btn">
+                  <span className="span">Employer</span>
+                </div>
+              </div>
 
-          <div className="radio-inputs">
-            <span className="role-label">Select Role |</span>
-            <label className="radio">
-              <input
-                type="radio"
-                name="role"
-                value="Admin"
-                checked={role === "Admin"}
-                onChange={(e) => setRole(e.target.value)}
-              />
-              <span className="name">Admin</span>
-            </label>
-            <label className="radio">
-              <input
-                type="radio"
-                name="role"
-                value="Employer"
-                checked={role === "Employer"}
-                onChange={(e) => setRole(e.target.value)}
-              />
-              <span className="name">Employer</span>
-            </label>
-            <label className="radio">
-              <input
-                type="radio"
-                name="role"
-                value="Employee"
-                checked={role === "Employee"}
-                onChange={(e) => setRole(e.target.value)}
-              />
-              <span className="name">Employee</span>
-            </label>
+              <div className="option">
+                <input
+                  defaultChecked={role === "Employee"}
+                  value="Employee"
+                  name="role"
+                  type="radio"
+                  className="input"
+                  onChange={(e) => setRole(e.target.value)}
+                />
+                <div className="btn">
+                  <span className="span">Employee</span>
+                </div>
+              </div>
+            </div>
           </div>
-
           <button className="enter-signup">Sign Up</button>
         </div>
       </div>
