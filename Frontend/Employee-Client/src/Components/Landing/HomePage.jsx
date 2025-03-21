@@ -46,6 +46,7 @@ const HomePage = () => {
               Get Started!
             </button>
           </Link>
+          <Link to="/contact">
           <button
             type="button"
             class="btn btn-light rounded-pill btn-lg"
@@ -53,6 +54,7 @@ const HomePage = () => {
           >
             Chat with us
           </button>
+          </Link>
         </div>
       </div>
       <div className="about-section">

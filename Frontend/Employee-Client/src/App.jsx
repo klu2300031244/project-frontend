@@ -10,6 +10,9 @@ import About from "./Components/Landing/About";
 import ContactUs from "./Components/Landing/ContactUs";
 import Features from "./Components/Landing/Features";
 import FAQ from "./Components/Landing/FAQ";
+import ManagerDasboard from "./Components/Manager/ManagerDashboard";
+import SuperAdminDashboard from "./Components/SuperAdminDashboard";
+import EmployeeDashboard from "./Components/Employee/EmployeeDashboard";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 function App() {
   const [count, setCount] = useState(0);
@@ -24,7 +27,9 @@ function App() {
         <Route path="/contact" element={<ContactUs />} />
         <Route path="/features" element={<Features />} />
         <Route path="/faq" element={<FAQ />} />
-
+        <Route path="/managerdashboard" element={<ManagerDasboard />} />
+<Route path="/superadmindashboard" element={<SuperAdminDashboard />} />
+<Route path="/employeedashboard" element={<EmployeeDashboard />} />
       </Routes>
     </BrowserRouter>
   );

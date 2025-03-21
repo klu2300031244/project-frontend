@@ -76,7 +76,7 @@ const ContactUs = () => {
               height="250"
               style={{ border: "0" }} // FIX: JSX requires an object for style
               allowFullScreen // FIX: Boolean attributes should not have values
-              
+              loading="eager"
               referrerPolicy="no-referrer-when-downgrade" // FIX: JSX uses camelCase
             ></iframe>
           </div>

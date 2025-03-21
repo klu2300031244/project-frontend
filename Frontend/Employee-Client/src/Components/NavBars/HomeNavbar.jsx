@@ -27,7 +27,7 @@ const HomeNavbar = () => {
     <nav className={`navbar ${isSticky ? "sticky" : ""} ${!isHomePage ? "non-home" : ""}`}>
       <div className="navbar-container">
         <Link to="/" className="navbar-logo" >
-          EMS Dashboard
+          Crew Connect 360
         </Link>
         <ul className="nav-menu">
           <li className="nav-item">
