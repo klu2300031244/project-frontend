@@ -1,8 +1,10 @@
 package klu.Controller;
 
 import klu.Model.Attendance;
-import klu.enums.AttendanceStatus;
 import klu.Service.AttendanceService;
+import klu.enums.AttendanceStatus;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +17,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/attendance")
 public class AttendanceController {
-
+	@Autowired
     private final AttendanceService attendanceService;
 
     public AttendanceController(AttendanceService attendanceService) {
@@ -73,6 +75,14 @@ public class AttendanceController {
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate) {
         return ResponseEntity.ok(attendanceService.getAttendanceByEmployeeAndDateRange(
                 employeeId, startDate, endDate));
+    }
+
+    @GetMapping("/employee/{employeeId}/month")
+    public ResponseEntity<List<Attendance>> getAttendanceByEmployeeAndMonth(
+            @PathVariable Long employeeId,
+            @RequestParam int year,
+            @RequestParam int month) {
+        return ResponseEntity.ok(attendanceService.getAttendanceByEmployeeAndMonth(employeeId, year, month));
     }
 
     @DeleteMapping("/{id}")

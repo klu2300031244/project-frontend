@@ -78,8 +78,16 @@ public class AttendanceService {
         return attendanceRepository.findByEmployee_IdAndDateBetween(employeeId, startDate, endDate);
     }
 
+    
+
     @Transactional
     public void deleteAttendanceRecord(Long id) {
         attendanceRepository.deleteById(id);
     }
+    @Transactional(readOnly = true)
+	public List<Attendance> getAttendanceByEmployeeAndMonth(Long employeeId, int year, int month) {
+		LocalDate startDate = LocalDate.of(year, month, 1);
+        LocalDate endDate = startDate.withDayOfMonth(startDate.lengthOfMonth());
+        return attendanceRepository.findByEmployee_IdAndDateBetween(employeeId, startDate, endDate);
+	}
 }
