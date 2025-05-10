@@ -16,6 +16,7 @@ import EmployeeLeavePage from "./Components/Employee/EmployeeLeavePage";
 import ManagerLeavePage from "./Components/Manager/ManagerLeavePage";
 import EmployeeAttendancePage from "./Components/Employee/EmployeeAttendancePage";
 import ManagerAttendancePage from "./Components/Manager/ManagerAttendancePage";
+import EmployeePayrollPage from "./Components/Employee/EmployeePayrollPage";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -38,7 +39,7 @@ function App() {
 <Route path="/employeedashboard" element={<EmployeeDashboard />} />
 
   <Route path="/attendance" element={<EmployeeAttendancePage />} />
-
+    <Route path="/payroll" element={<EmployeePayrollPage />} />
 
   <Route path="/attendance/manage" element={<ManagerAttendancePage />} />
       </Routes>
