@@ -97,6 +97,7 @@ const HomePage = () => {
                 data handling, role-based access, and seamless integration to
                 enhance workplace operations.
               </p>
+              {/* */}
               <p className="quote-author">- Lead Developer</p>
             </div>
           </div>

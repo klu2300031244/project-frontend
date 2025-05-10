@@ -79,6 +79,7 @@ const SignupForm = () => {
             <div className="inputBox-signup" style={{ marginBottom: "20px" }}>
               <input type="password" name="password" value={formData.password} onChange={handleChange} required />
               <span>Password</span>
+              {/* */}
             </div>
 
             <div className="inputBox-signup" style={{ marginBottom: "20px" }}>

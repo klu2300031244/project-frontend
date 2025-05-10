@@ -71,6 +71,7 @@ const Features = () => {
   return (
     <div>
         <HomeNavbar />
+        {/* */}
       <div className="row features">
         <div className="col-md-6" >
           <h2 className="typewriter">Features</h2>

@@ -24,6 +24,7 @@ const EmployeeDashboard = () => {
       {/* Sidebar and Main Content Layout */}
       <Row className="g-0">
         {/* Sidebar */}
+        {/* */}
         <Col md={2} className="sidebar bg-dark text-white vh-100 sticky-top">
           <div className="sidebar-header p-3 text-center">
             <h4>EMPLOYEE Portal</h4>
