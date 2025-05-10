@@ -1,6 +1,4 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
 import HomePage from "./Components/Landing/HomePage";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -10,12 +8,18 @@ import About from "./Components/Landing/About";
 import ContactUs from "./Components/Landing/ContactUs";
 import Features from "./Components/Landing/Features";
 import FAQ from "./Components/Landing/FAQ";
-import ManagerDasboard from "./Components/Manager/ManagerDashboard";
+import ManagerDashboard from "./Components/Manager/ManagerDashboard";
 import SuperAdminDashboard from "./Components/SuperAdminDashboard";
 import EmployeeDashboard from "./Components/Employee/EmployeeDashboard";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import EmployeeLeavePage from "./Components/Employee/EmployeeLeavePage";
+import ManagerLeavePage from "./Components/Manager/ManagerLeavePage";
+import EmployeeAttendancePage from "./Components/Employee/EmployeeAttendancePage";
+import ManagerAttendancePage from "./Components/Manager/ManagerAttendancePage";
+
 function App() {
   const [count, setCount] = useState(0);
+  const [user, setUser] = useState(null); // Add user state to manage the current user
 
   return (
     <BrowserRouter>
@@ -27,9 +31,16 @@ function App() {
         <Route path="/contact" element={<ContactUs />} />
         <Route path="/features" element={<Features />} />
         <Route path="/faq" element={<FAQ />} />
-        <Route path="/managerdashboard" element={<ManagerDasboard />} />
+        <Route path="/leave" element={<EmployeeLeavePage />} />
+          <Route path="/leave/approvals" element={<ManagerLeavePage />} />
+        <Route path="/managerdashboard" element={<ManagerDashboard />} />
 <Route path="/superadmindashboard" element={<SuperAdminDashboard />} />
 <Route path="/employeedashboard" element={<EmployeeDashboard />} />
+
+  <Route path="/attendance" element={<EmployeeAttendancePage />} />
+
+
+  <Route path="/attendance/manage" element={<ManagerAttendancePage />} />
       </Routes>
     </BrowserRouter>
   );

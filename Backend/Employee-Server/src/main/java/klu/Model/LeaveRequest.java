@@ -5,6 +5,8 @@ import klu.enums.LeaveStatus;
 import lombok.*;
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name = "leave_requests")
 @Data
@@ -18,6 +20,7 @@ public class LeaveRequest {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "employee_id", nullable = false)
+    @JsonBackReference
     private Employee employee;
 
     private LocalDate startDate;

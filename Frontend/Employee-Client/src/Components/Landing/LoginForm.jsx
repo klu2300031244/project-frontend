@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "../css/LoginForm.css";
 import HomeNavbar from "../NavBars/HomeNavbar";
 import { Link, useNavigate } from "react-router-dom";
@@ -17,13 +17,19 @@ const LoginForm = () => {
       });
 
       if (response.data.error) {
-        setError(response.data.error); // Show error if login fails
+        setError(response.data.error);
       } else {
-        const { id, role } = response.data;
+        const { id, role, name } = response.data;
 
         // Store user details
-        localStorage.setItem("userId", id);
+        localStorage.setItem("employeeId", id);
         localStorage.setItem("role", role);
+        localStorage.setItem("userName", name || (role === "MANAGER" ? "Manager" : "Employee"));
+
+        // For managers, set managerId (assuming id is same as managerId)
+        if (role === "MANAGER") {
+          localStorage.setItem("managerId", id);
+        }
 
         // Redirect based on role
         if (role === "MANAGER") {
@@ -69,7 +75,7 @@ const LoginForm = () => {
             Enter
           </button>
           <div className="message">
-            Don't have an account? <Link to="/signup">Sign up</Link>
+            Dont have an account? <Link to="/signup">Sign up</Link>
           </div>
         </div>
       </div>

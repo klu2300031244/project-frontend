@@ -2,64 +2,82 @@ package klu.Service;
 
 import klu.Model.LeaveRequest;
 import klu.Model.Employee;
-import klu.Model.Attendance;
 import klu.enums.LeaveStatus;
-import klu.enums.AttendanceStatus;
-import klu.Repository.LeaveRequestRepository;
 import klu.Repository.EmployeeRepo;
-import klu.Repository.AttendanceRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import klu.Repository.LeaveRequestRepository;
+
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class LeaveRequestService {
 
-    @Autowired
-    private LeaveRequestRepository leaveRequestRepository;
+    private final LeaveRequestRepository leaveRequestRepository;
+    private final EmployeeRepo employeeRepository;
 
-    @Autowired
-    private EmployeeRepo employeeRepository;
+    public LeaveRequestService(LeaveRequestRepository leaveRequestRepository, 
+                             EmployeeRepo employeeRepository) {
+        this.leaveRequestRepository = leaveRequestRepository;
+        this.employeeRepository = employeeRepository;
+    }
 
-    @Autowired
-    private AttendanceRepository attendanceRepository;
-
-    // Request a leave
-    public LeaveRequest requestLeave(LeaveRequest leaveRequest) {
+    @Transactional
+    public LeaveRequest createLeaveRequest(Long employeeId, LocalDate startDate, 
+                                         LocalDate endDate, String description) {
+        Employee employee = employeeRepository.findById(employeeId)
+                .orElseThrow(() -> new RuntimeException("Employee not found with id: " + employeeId));
+        
+        LeaveRequest leaveRequest = new LeaveRequest();
+        leaveRequest.setEmployee(employee);
+        leaveRequest.setStartDate(startDate);
+        leaveRequest.setEndDate(endDate);
+        leaveRequest.setDescription(description);
+        leaveRequest.setStatus(LeaveStatus.PENDING);
+        
         return leaveRequestRepository.save(leaveRequest);
     }
 
-    // Get all leave requests by employee
-    public List<LeaveRequest> getLeavesByEmployee(Long employeeId) {
+    @Transactional(readOnly = true)
+    public List<LeaveRequest> getAllLeaveRequests() {
+        return leaveRequestRepository.findAll();
+    }
+
+    @Transactional(readOnly = true)
+    public Optional<LeaveRequest> getLeaveRequestById(Long id) {
+        return leaveRequestRepository.findById(id);
+    }
+
+    @Transactional(readOnly = true)
+    public List<LeaveRequest> getLeaveRequestsByEmployeeId(Long employeeId) {
         return leaveRequestRepository.findByEmployeeId(employeeId);
     }
 
-    // Approve or Reject leave
-    public LeaveRequest updateLeaveStatus(Long leaveId, LeaveStatus status) {
-        LeaveRequest leaveRequest = leaveRequestRepository.findById(leaveId)
-                .orElseThrow(() -> new RuntimeException("Leave Request not found"));
-
-        leaveRequest.setStatus(status);
-        leaveRequestRepository.save(leaveRequest);
-
-        if (status == LeaveStatus.APPROVED) {
-            markLeaveInAttendance(leaveRequest);
-        }
-
-        return leaveRequest;
+    @Transactional(readOnly = true)
+    public List<LeaveRequest> getLeaveRequestsByStatus(LeaveStatus status) {
+        return leaveRequestRepository.findByStatus(status);
     }
 
-    // Mark Leave in Attendance
-    private void markLeaveInAttendance(LeaveRequest leaveRequest) {
-        Employee employee = leaveRequest.getEmployee();
-        for (LocalDate date = leaveRequest.getStartDate(); !date.isAfter(leaveRequest.getEndDate()); date = date.plusDays(1)) {
-            Attendance attendance = new Attendance();
-            attendance.setEmployee(employee);
-            attendance.setDate(date);
-            attendance.setStatus(AttendanceStatus.LEAVE);
-            attendanceRepository.save(attendance);
-        }
+    @Transactional
+    public LeaveRequest updateLeaveRequestStatus(Long id, LeaveStatus status) {
+        LeaveRequest leaveRequest = leaveRequestRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Leave request not found with id: " + id));
+        
+        leaveRequest.setStatus(status);
+        return leaveRequestRepository.save(leaveRequest);
+    }
+
+    @Transactional
+    public void deleteLeaveRequest(Long id) {
+        leaveRequestRepository.deleteById(id);
+    }
+
+    @Transactional(readOnly = true)
+    public boolean isLeaveRequestOverlapping(Long employeeId, LocalDate startDate, LocalDate endDate) {
+        return leaveRequestRepository.existsByEmployeeIdAndStartDateLessThanEqualAndEndDateGreaterThanEqualAndStatus(
+                employeeId, endDate, startDate, LeaveStatus.APPROVED);
     }
 }

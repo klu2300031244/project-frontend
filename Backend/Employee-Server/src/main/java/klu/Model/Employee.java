@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.*;
 import klu.enums.Status;
@@ -54,6 +55,7 @@ public class Employee {
         }
     }
     @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference 
     private List<LeaveRequest> leaveRequests = new ArrayList<>();
     @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Attendance> attendanceRecords = new ArrayList<>();
