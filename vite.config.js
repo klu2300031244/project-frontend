@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  base: '/ems/',
+  base: '/frontapp1/',
   server: {
     proxy: {
       '/employees': {
