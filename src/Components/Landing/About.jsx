@@ -8,7 +8,7 @@ const About = () => {
       <HomeNavbar />
       <div className="container-aboutus">
         <div className="container-image">
-          <img src="/images/about-image.jpg" alt="about" />
+          <img src="/ems/images/about-image.jpg" alt="about" />
           <div className="container-card">
             <h2>About Us</h2>
             <p>
@@ -35,12 +35,12 @@ const About = () => {
             </p>
           </div>
           <div className="about-us-card-image">
-            <img src="/images/security.jpg" className="image" alt="secure" />
+            <img src="/ems/images/security.jpg" className="image" alt="secure" />
           </div>
         </div>
         <div className="about-us-card">
           <div className="about-us-card-image">
-            <img src="/images/roles.png" className="image" alt="efficient" />
+            <img src="/ems/images/roles.png" className="image" alt="efficient" />
           </div>
           <div className="about-us-card-text">
             <h4><i class="bi bi-person-plus" style={{color:'orange',marginRight:'5px',fontSize:'28px'}}></i> Access Control</h4>

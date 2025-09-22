@@ -28,7 +28,7 @@ const HomePage = () => {
         <div className="navbar-overlay">
           <HomeNavbar />
         </div>
-        <img src="/images/bg-Image-1.jpg" alt="My Image" className="background-image" />
+        <img src="/ems/images/bg-Image-1.jpg" alt="My Image" className="background-image" />
         <div className="hero-text">
           <h3>Streamline Your Workforce Management</h3>
           <h1>Effortless Employee Administration</h1>
