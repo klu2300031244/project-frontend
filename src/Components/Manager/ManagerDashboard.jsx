@@ -41,7 +41,7 @@ const ManagerDashboard = () => {
   const fetchEmployees = async (id) => {
     try {
       const response = await axios.get(
-        `http://localhost:8080/employees/byManager/${id}`
+        `http://localhost:8081/employees/byManager/${id}`
       );
       setEmployees(response.data);
       setLoading(false);
@@ -54,8 +54,8 @@ const ManagerDashboard = () => {
   const fetchDashboardStats = async (id) => {
     try {
       const [employeesRes, leavesRes] = await Promise.all([
-        axios.get(`http://localhost:8080/employees/count/byManager/${id}`),
-        axios.get(`http://localhost:8080/leave-requests/pending/byManager/${id}`),
+        axios.get(`http://localhost:8081/employees/count/byManager/${id}`),
+        axios.get(`http://localhost:8081/leave-requests/pending/byManager/${id}`),
       ]);
 
       setStats({
