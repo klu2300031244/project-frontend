@@ -13,7 +13,7 @@ import klu.Service.EmployeeService;
 import klu.enums.Status;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "*")
 @RestController
 public class SuperAdminController {
 	@Autowired 

@@ -12,7 +12,7 @@ import klu.Service.ManagerService;
 import java.util.HashMap;
 import java.util.Map;
 
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/auth")
 public class LoginController {

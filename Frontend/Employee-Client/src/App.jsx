@@ -23,7 +23,7 @@ function App() {
   const [user, setUser] = useState(null); // Add user state to manage the current user
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/ems">
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginForm />} />
@@ -33,15 +33,13 @@ function App() {
         <Route path="/features" element={<Features />} />
         <Route path="/faq" element={<FAQ />} />
         <Route path="/leave" element={<EmployeeLeavePage />} />
-          <Route path="/leave/approvals" element={<ManagerLeavePage />} />
+        <Route path="/leave/approvals" element={<ManagerLeavePage />} />
         <Route path="/managerdashboard" element={<ManagerDashboard />} />
-<Route path="/superadmindashboard" element={<SuperAdminDashboard />} />
-<Route path="/employeedashboard" element={<EmployeeDashboard />} />
-
-  <Route path="/attendance" element={<EmployeeAttendancePage />} />
-    <Route path="/payroll" element={<EmployeePayrollPage />} />
-
-  <Route path="/attendance/manage" element={<ManagerAttendancePage />} />
+        <Route path="/superadmindashboard" element={<SuperAdminDashboard />} />
+        <Route path="/employeedashboard" element={<EmployeeDashboard />} />
+        <Route path="/attendance" element={<EmployeeAttendancePage />} />
+        <Route path="/payroll" element={<EmployeePayrollPage />} />
+        <Route path="/attendance/manage" element={<ManagerAttendancePage />} />
       </Routes>
     </BrowserRouter>
   );

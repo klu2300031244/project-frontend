@@ -10,7 +10,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 import java.time.LocalDate;
 import java.util.List;
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/leave-requests")
 public class LeaveRequestController {

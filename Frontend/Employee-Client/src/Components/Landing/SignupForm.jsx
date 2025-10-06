@@ -29,7 +29,7 @@ const SignupForm = () => {
     }
 
     try {
-      const response = await fetch("http://localhost:8080/manager/addManager", {
+      const response = await fetch("http://localhost:8081/manager/addManager", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

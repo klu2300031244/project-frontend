@@ -18,7 +18,7 @@ import klu.Model.Manager;
 import klu.Service.EmployeeService;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/employees")
 public class EmployeeController {

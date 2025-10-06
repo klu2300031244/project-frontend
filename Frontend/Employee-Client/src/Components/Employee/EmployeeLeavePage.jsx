@@ -17,7 +17,7 @@ const EmployeeLeavePage = () => {
     const navigate = useNavigate();
     const employeeName = localStorage.getItem('employeeName') || 'Employee';
 
-    const API_BASE_URL = 'http://localhost:8080';
+    const API_BASE_URL = 'http://localhost:8081';
     
     // Fetch employee's leave requests
     useEffect(() => {
