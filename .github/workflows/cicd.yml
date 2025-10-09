@@ -23,12 +23,15 @@ jobs:
           node-version: 18
 
       - name: Install dependencies
-        run: npm install --legacy-peer-deps
+        working-directory: Frontend/Employee-Client
+        run: npm ci --legacy-peer-deps
 
       - name: Run tests
+        working-directory: Frontend/Employee-Client
         run: npm test --if-present
 
       - name: Build the project
+        working-directory: Frontend/Employee-Client
         run: npm run build
 
       # Configure Git identity
