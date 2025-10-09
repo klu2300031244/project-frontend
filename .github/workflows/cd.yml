@@ -1,0 +1,72 @@
+name: Build and Deploy Full Stack App
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout repo
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Step 2: Set up Java for Spring Boot backend
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+
+      # Step 3: Build backend using Maven
+      - name: Build Spring Boot Backend
+        working-directory: Backend/Employee-Server
+        run: mvn clean package -DskipTests
+
+      # Step 4: (Optional) Upload backend JAR as an artifact
+      - name: Upload Backend Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: employee-server
+          path: Backend/Employee-Server/target/*.jar
+
+      # Step 5: Set up Node for React frontend
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      # Step 6: Create frontend .env file for backend URL
+      # Replace BACKEND_URL with your actual deployed backend endpoint
+      - name: Create .env file for frontend
+        working-directory: Frontend/Employee-Client
+        run: |
+          echo "REACT_APP_API_BASE_URL=https://your-backend-domain.com/api" > .env
+          cat .env
+
+      # Step 7: Install and build React frontend
+      - name: Install dependencies
+        working-directory: Frontend/Employee-Client
+        run: npm ci
+
+      - name: Build React app
+        working-directory: Frontend/Employee-Client
+        run: npm run build
+
+      # Step 8: Configure Git identity
+      - name: Configure Git identity
+        run: |
+          git config --global user.name "klu2300031244"
+          git config --global user.email "klu2300031244@kluniversity.in"
+
+      # Step 9: Deploy React build to GitHub Pages
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: Frontend/Employee-Client/build
