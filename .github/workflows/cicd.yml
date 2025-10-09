@@ -23,25 +23,19 @@ jobs:
           node-version: 18
 
       - name: Install dependencies
-        working-directory: Frontend/Employee-Client
-        run: npm ci --legacy-peer-deps
+        working-directory: ./   # if package.json is at the root
+        run: npm install --legacy-peer-deps
 
       - name: Run tests
-        working-directory: Frontend/Employee-Client
+        working-directory: ./
         run: npm test --if-present
 
       - name: Build the project
-        working-directory: Frontend/Employee-Client
+        working-directory: ./
         run: npm run build
 
-      # Configure Git identity
-      - name: Configure Git
-        run: |
-          git config --global user.name "klu2300031244"
-          git config --global user.email "klu2300031244@kluniversity.in"
-
-      # Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
+        working-directory: ./
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
