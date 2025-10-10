@@ -17,8 +17,8 @@ services:
 
   backend:
     build:
-      context: ./Backend/Employee-Server
-      dockerfile: ../../Dockerfile.backend
+      context: ./Backend\Employee-Server
+      dockerfile: ../../docker-git-fullstackapp\Dockerfile.backend
     container_name: employee-backend
     restart: always
     environment:
@@ -36,8 +36,8 @@ services:
 
   frontend:
     build:
-      context: ./Frontend/Employee-Client
-      dockerfile: ../../Dockerfile.frontend
+      context: ./Frontend\Employee-Client
+      dockerfile: ../../docker-git-fullstackapp\Dockerfile.frontend
     container_name: employee-frontend
     restart: always
     environment:
