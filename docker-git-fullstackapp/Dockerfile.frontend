@@ -1,18 +1,26 @@
-# ---------- Build stage ----------
+# Stage 1: Build Vite React app
 FROM node:20-alpine AS builder
 WORKDIR /app
 
-COPY ./Frontend/Employee-Client /app
+# Copy package.json for caching
+COPY package*.json ./
+RUN npm ci --legacy-peer-deps
 
-RUN npm install
+# Copy all frontend code
+COPY . .
+
+# Build frontend
 RUN npm run build
 
-# ---------- Run stage ----------
+# Stage 2: Serve with Nginx
 FROM nginx:alpine
 WORKDIR /usr/share/nginx/html
 
-COPY ./nginx.conf /etc/nginx/conf.d/default.conf
-COPY --from=builder /app/dist ./
+# Copy nginx.conf from docker-git-fullstack folder
+COPY C:/Users/jnaan/Desktop/3rd Year/DevOps/project/Project/EmployeeManagementSystem/docker-git-fullstack/nginx.conf /etc/nginx/conf.d/default.conf
+
+# Copy build output
+COPY --from=builder /app/dist .
 
 EXPOSE 5173
 CMD ["nginx", "-g", "daemon off;"]
