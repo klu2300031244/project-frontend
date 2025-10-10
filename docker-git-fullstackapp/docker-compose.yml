@@ -1,53 +1,57 @@
+version: '3.8'
 
 services:
   db:
     image: mysql:8.0
-    container_name: ems
+    container_name: employee-mysql
     restart: always
     environment:
-      MYSQL_DATABASE: ecommerce
+      MYSQL_DATABASE: ems
       MYSQL_ROOT_PASSWORD: root
     ports:
       - "3306:3306"
     volumes:
       - db_data:/var/lib/mysql
     networks:
-      - ecommerce-net
+      - employee-net
 
   backend:
     build:
-      context: .
-      dockerfile: Dockerfile.backend
-    container_name: Backend/Employee-Server
+      context: ./Backend/Employee-Server
+      dockerfile: ../../Dockerfile.backend
+    container_name: employee-backend
     restart: always
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/ems
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: root
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SERVER_PORT: 8081
     depends_on:
       - db
     ports:
       - "8081:8081"
     networks:
-      - ecommerce-net
+      - employee-net
 
   frontend:
     build:
-      context: .
-      dockerfile: Dockerfile.frontend
-    container_name: Frontend/Employee-Client
+      context: ./Frontend/Employee-Client
+      dockerfile: ../../Dockerfile.frontend
+    container_name: employee-frontend
     restart: always
+    environment:
+      - VITE_API_BASE_URL=http://backend:8081/ems
     ports:
-      - "80:80"
+      - "5173:5173"
     depends_on:
       - backend
     networks:
-      - ecommerce-net
+      - employee-net
 
 volumes:
   db_data:
 
 networks:
-  ecommerce-net:
+  employee-net:
     driver: bridge
