@@ -17,8 +17,8 @@ services:
 
   backend:
     build:
-      context: ./Backend/Employee-Server
-      dockerfile: ../docker-git-fullstackapp/Dockerfile.backend
+      context: C:\Users\jnaan\Desktop\3rd Year\DevOps\project\Project\EmployeeManagementSystem\Backend\Employee-Server
+      dockerfile: C:\Users\jnaan\Desktop\3rd Year\DevOps\project\Project\EmployeeManagementSystem\docker-git-fullstackapp\Dockerfile.backend
     container_name: employee-backend
     restart: always
     environment:
@@ -36,8 +36,8 @@ services:
 
   frontend:
     build:
-      context: ./Frontend/Employee-Client
-      dockerfile: ../docker-git-fullstackapp/Dockerfile.frontend
+      context: C:\Users\jnaan\Desktop\3rd Year\DevOps\project\Project\EmployeeManagementSystem\Frontend\Employee-Client
+      dockerfile: C:\Users\jnaan\Desktop\3rd Year\DevOps\project\Project\EmployeeManagementSystem\docker-git-fullstackapp\Dockerfile.frontend
     container_name: employee-frontend
     restart: always
     environment:
