@@ -36,7 +36,7 @@ services:
 
   frontend:
     build:
-      context: C:\Users\jnaan\Desktop\3rd Year\DevOps\project\Project\EmployeeManagementSystem\docker-git-fullstackapp
+      context: C:\Users\jnaan\Desktop\3rd Year\DevOps\project\Project\EmployeeManagementSystem\Frontend\Employee-Client
       dockerfile: C:\Users\jnaan\Desktop\3rd Year\DevOps\project\Project\EmployeeManagementSystem\docker-git-fullstackapp\Dockerfile.frontend
     container_name: employee-frontend
     restart: always
