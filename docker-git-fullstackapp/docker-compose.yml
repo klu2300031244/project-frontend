@@ -40,8 +40,6 @@ services:
       dockerfile: C:\Users\jnaan\Desktop\3rd Year\DevOps\project\Project\EmployeeManagementSystem\docker-git-fullstackapp\Dockerfile.frontend
     container_name: employee-frontend
     restart: always
-    environment:
-      VITE_API_BASE_URL: http://backend:8081/ems
     ports:
       - "5173:80"
     depends_on:
