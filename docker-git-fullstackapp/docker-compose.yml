@@ -22,7 +22,7 @@ services:
   backend:
     build:
       context: ../Backend/Employee-Server
-      dockerfile: ./Dockerfile.backend
+      dockerfile: ../docker-git-fullstackapp/Dockerfile.backend
     container_name: employee-backend
     restart: always
     depends_on:
@@ -40,7 +40,7 @@ services:
   frontend:
     build:
       context: ../Frontend/Employee-Client
-      dockerfile: ./Dockerfile.frontend
+      dockerfile: ../docker-git-fullstackapp/Dockerfile.frontend
     container_name: employee-frontend
     restart: always
     depends_on:
