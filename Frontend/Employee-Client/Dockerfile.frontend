@@ -1,4 +1,4 @@
-FROM node:20-alpine as build
+FROM node:20-alpine AS build
 WORKDIR /app
 COPY package*.json ./
 # Use npm install when lockfile may be out of sync; preserve legacy-peer-deps to avoid ERESOLVE

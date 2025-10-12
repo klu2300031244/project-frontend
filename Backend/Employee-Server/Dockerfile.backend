@@ -1,5 +1,5 @@
 ## Multi-stage Dockerfile for Spring Boot backend
-FROM eclipse-temurin:21-jdk as build
+FROM eclipse-temurin:21-jdk AS build
 WORKDIR /workspace
 
 # Copy project files
