@@ -7,7 +7,7 @@ WORKDIR /app
 COPY package*.json ./
 
 # Install dependencies (including dev for build)
-RUN npm install
+RUN npm install --legacy-peer-deps
 
 # Copy source code
 COPY . .
@@ -21,8 +21,8 @@ FROM nginx:alpine
 # Copy custom nginx config if present
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-# Copy built assets from builder
-COPY --from=builder /app/dist /usr/share/nginx/html
+# Copy built assets from builder to /ems/ subdirectory
+COPY --from=builder /app/dist /usr/share/nginx/html/ems
 
 # Expose port
 EXPOSE 80
