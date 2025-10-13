@@ -83,6 +83,6 @@ public class LeaveRequestService {
 
     @Transactional(readOnly = true)
     public List<LeaveRequest> getPendingLeaveRequestsByManager(Long managerId) {
-        return leaveRequestRepository.findByEmployeeManagerIdAndStatus(managerId, LeaveStatus.PENDING);
+        return leaveRequestRepository.findByEmployee_Manager_IdAndStatus(managerId, LeaveStatus.PENDING);
     }
 }

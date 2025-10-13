@@ -14,5 +14,5 @@ public interface LeaveRequestRepository extends JpaRepository<LeaveRequest, Long
     List<LeaveRequest> findByStatus(LeaveStatus status);
     boolean existsByEmployeeIdAndStartDateLessThanEqualAndEndDateGreaterThanEqualAndStatus(
             Long employeeId, LocalDate endDate, LocalDate startDate, LeaveStatus status);
-    List<LeaveRequest> findByEmployeeManagerIdAndStatus(Long managerId, LeaveStatus status);
+    List<LeaveRequest> findByEmployee_Manager_IdAndStatus(Long managerId, LeaveStatus status);
 }
