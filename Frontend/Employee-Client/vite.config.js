@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  base: '/ems/', // correct for subdirectory SPA routing
+  base: '/', // correct for root serving in Docker/nginx
   server: {
     proxy: {
       '/employees': {
