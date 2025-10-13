@@ -80,4 +80,9 @@ public class LeaveRequestService {
         return leaveRequestRepository.existsByEmployeeIdAndStartDateLessThanEqualAndEndDateGreaterThanEqualAndStatus(
                 employeeId, endDate, startDate, LeaveStatus.APPROVED);
     }
+
+    @Transactional(readOnly = true)
+    public List<LeaveRequest> getPendingLeaveRequestsByManager(Long managerId) {
+        return leaveRequestRepository.findByEmployeeManagerIdAndStatus(managerId, LeaveStatus.PENDING);
+    }
 }

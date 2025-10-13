@@ -10,6 +10,8 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
 @CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/leave-requests")
@@ -80,5 +82,11 @@ public class LeaveRequestController {
     public ResponseEntity<Void> deleteLeaveRequest(@PathVariable Long id) {
         leaveRequestService.deleteLeaveRequest(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/pending/byManager/{managerId}")
+    public ResponseEntity<List<LeaveRequest>> getPendingLeaveRequestsByManager(@PathVariable Long managerId) {
+        List<LeaveRequest> pendingLeaves = leaveRequestService.getPendingLeaveRequestsByManager(managerId);
+        return ResponseEntity.ok(pendingLeaves);
     }
 }

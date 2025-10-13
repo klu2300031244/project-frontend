@@ -1,6 +1,8 @@
 package klu.Controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -50,6 +52,14 @@ public class EmployeeController {
     @GetMapping("/byManager/{managerId}")
     public List<Employee> getEmployeesByManager(@PathVariable Long managerId) {
         return service.getEmployeesByManager(managerId);
+    }
+
+    @GetMapping("/count/byManager/{managerId}")
+    public Map<String, Long> getEmployeeCountByManager(@PathVariable Long managerId) {
+        List<Employee> employees = service.getEmployeesByManager(managerId);
+        Map<String, Long> response = new HashMap<>();
+        response.put("count", (long) employees.size());
+        return response;
     }
    
 
