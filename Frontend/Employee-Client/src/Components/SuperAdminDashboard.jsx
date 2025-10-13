@@ -12,7 +12,7 @@ const SuperAdminDashboard = () => {
 
   const fetchEmployees = async () => {
     try {
-      const response = await axios.get("http://localhost:8081/employees/allEmployees");
+      const response = await axios.get("http://backend:8081/employees/allEmployees");
       setEmployees(response.data);
     } catch (error) {
       console.error("Error fetching employees:", error);
@@ -22,7 +22,7 @@ const SuperAdminDashboard = () => {
   // Update Employee Status
   const updateStatus = async (id, newStatus) => {
     try {
-      await axios.post(`http://localhost:8081/updateEmployeeStatus/${id}`, null, {
+      await axios.post(`http://backend:8081/updateEmployeeStatus/${id}`, null, {
         params: { status: newStatus },
       });
 
